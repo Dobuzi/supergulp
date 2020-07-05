@@ -23,5 +23,7 @@
         "gulp": "^4.0.2",
         "gulp-pug": "^4.0.1"
     },
-    "dependencies": {}
+    "dependencies": {
+        "del": "^5.1.0"
+    }
 }
