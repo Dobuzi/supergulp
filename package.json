@@ -1,22 +1,25 @@
 {
-  "name": "supergulp",
-  "version": "1.0.0",
-  "description": "Learn Gulp by building an awesome development environment",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Dobuzi/supergulp"
-  },
-  "keywords": [
-    "gulp"
-  ],
-  "author": "Dobuzi",
-  "license": "MIT",
-  "homepage": "https://github.com/Dobuzi/supergulp#readme",
-  "scripts": {
-    "dev": "gulp dev",
-    "build": "gulp build"
-  },
-  "dependencies": {
-    "gulp": "^4.0.2"
-  }
+    "name": "supergulp",
+    "version": "1.0.0",
+    "description": "Learn Gulp by building an awesome development environment",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Dobuzi/supergulp"
+    },
+    "keywords": [
+        "gulp"
+    ],
+    "author": "Dobuzi",
+    "license": "MIT",
+    "homepage": "https://github.com/Dobuzi/supergulp#readme",
+    "scripts": {
+        "dev": "gulp dev",
+        "build": "gulp build"
+    },
+    "devDependencies": {
+        "gulp": "^4.0.2",
+        "@babel/core": "^7.10.4",
+        "@babel/preset-env": "^7.10.4",
+        "@babel/register": "^7.10.4"
+    }
 }
