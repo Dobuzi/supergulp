@@ -3,6 +3,9 @@ import pug from "gulp-pug";
 import del from "del";
 import webserver from "gulp-webserver";
 import image from "gulp-image";
+import sass from "gulp-sass";
+
+sass.compiler = require("node-sass");
 
 const routes = {
     pug: {
@@ -13,6 +16,11 @@ const routes = {
     img: {
         src: "src/img/*",
         dest: "build/img",
+    },
+    scss: {
+        watch: "src/scss/**/*.scss",
+        src: "src/scss/style.scss",
+        dest: "build/css",
     },
 };
 
@@ -27,13 +35,20 @@ const hostWebserver = () =>
 const optimizeImg = () =>
     gulp.src(routes.img.src).pipe(image()).pipe(gulp.dest(routes.img.dest));
 
+const makeCSSfromSCSS = () =>
+    gulp
+        .src(routes.scss.src)
+        .pipe(sass().on("error", sass.logError))
+        .pipe(gulp.dest(routes.scss.dest));
+
 const watch = () => {
     gulp.watch(routes.pug.watch, makeHTMLfromPug);
     gulp.watch(routes.img.src, optimizeImg);
+    gulp.watch(routes.scss.watch, makeCSSfromSCSS);
 };
 
 const prepare = gulp.series([clean, optimizeImg]);
-const assets = gulp.series([makeHTMLfromPug]);
+const assets = gulp.series([makeHTMLfromPug, makeCSSfromSCSS]);
 const live = gulp.parallel([hostWebserver, watch]);
 
 export const dev = gulp.series([prepare, assets, live]);
